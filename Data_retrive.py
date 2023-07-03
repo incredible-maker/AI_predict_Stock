@@ -1,7 +1,10 @@
 import yfinance as yf
 import pandas as pd
 
-def save_financial_data(ticker):
+def save_financial_data():
+    # Prompt user to enter the ticker symbol
+    ticker = input("Enter the ticker symbol: ")
+    
     stock = yf.Ticker(ticker)
     
     # Get income statement for the current year
@@ -33,5 +36,4 @@ def save_financial_data(ticker):
     print(f"Balance sheet saved as {balance_sheet_file}")
     
 # Example usage
-ticker_symbol = "TEMN.SW"
-save_financial_data(ticker_symbol)
+save_financial_data()
