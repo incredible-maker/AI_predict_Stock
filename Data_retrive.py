@@ -21,19 +21,20 @@ def save_financial_data():
     prev_year_balance_sheet = balance_sheet.iloc[:, balance_sheet.columns.year == current_year - 1]
     
     # Save income statement as Excel file
-    income_stmt_file = f"{ticker}_income_statement.xlsx"
+    income_stmt_file = ticker + "_income_statement.xlsx"
     with pd.ExcelWriter(income_stmt_file) as writer:
         income_stmt.to_excel(writer, sheet_name='Current Year')
         prev_year_income_stmt.to_excel(writer, sheet_name='Previous Year')
     
     # Save balance sheet as Excel file
-    balance_sheet_file = f"{ticker}_balance_sheet.xlsx"
+    balance_sheet_file = ticker + "_balance_sheet.xlsx"
     with pd.ExcelWriter(balance_sheet_file) as writer:
         balance_sheet.to_excel(writer, sheet_name='Current Year')
         prev_year_balance_sheet.to_excel(writer, sheet_name='Previous Year')
     
-    print(f"Income statement saved as {income_stmt_file}")
-    print(f"Balance sheet saved as {balance_sheet_file}")
+    print("Income statement saved as " + income_stmt_file)
+    print("Balance sheet saved as " + balance_sheet_file)
+
     
 # Example usage
 save_financial_data()
